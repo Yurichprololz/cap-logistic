@@ -11,15 +11,16 @@
     },
     "devDependencies": {
         "@sap/ux-specification": "^1.102.9",
-        "sqlite3": "^5.0.4",
-        "rimraf": "^3.0.2"
+        "rimraf": "^3.0.2",
+        "sqlite3": "^5.0.4"
     },
     "scripts": {
         "start": "cds run",
         "watch-ui.driver": "cds watch --open ui.driver/webapp/index.html?sap-ui-xx-viewCache=false",
         "undeploy": "cf undeploy cap-logistic --delete-services --delete-service-keys --delete-service-brokers",
         "build": "rimraf resources mta_archives && mbt build --mtar archive",
-        "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+        "watch-ui.car": "cds watch --open ui.car/webapp/index.html?sap-ui-xx-viewCache=false"
     },
     "eslintConfig": {
         "extends": "eslint:recommended",
@@ -57,6 +58,7 @@
         }
     },
     "sapux": [
-        "app/ui.driver"
+        "app/ui.driver",
+        "app/ui.car"
     ]
 }

@@ -1,22 +1,22 @@
 using LogicticService as service from '../../srv/service';
 
-annotate service.Driver with @(
+annotate service.Car with @(
     UI        : {
-        SelectionFields     : [name],
+        SelectionFields     : [number],
         LineItem            : [
             {
                 $Type             : 'UI.DataField',
-                Value             : name,
+                Value             : brand,
                 ![@UI.Importance] : #High
             },
             {
                 $Type             : 'UI.DataField',
-                Value             : surname,
+                Value             : number,
                 ![@UI.Importance] : #High
             },
             {
                 $Type             : 'UI.DataField',
-                Value             : age,
+                Value             : driver_ID,
                 ![@UI.Importance] : #High
             },
             {
@@ -28,50 +28,44 @@ annotate service.Driver with @(
         ],
         PresentationVariant : {SortOrder : [{
             $Type      : 'Common.SortOrderType',
-            Property   : name,
+            Property   : number,
             Descending : false
         }]},
     },
     UI        : {
         HeaderInfo                     : {
-            TypeName       : 'Driver',
-            TypeNamePlural : 'Drivers',
-            Title          : {Value : name},
-            Description    : {Value : surname}
+            TypeName       : 'Car',
+            TypeNamePlural : 'Cars',
+            Title          : {Value : brand},
+            Description    : {Value : number}
         },
         HeaderFacets                   : [{
             $Type             : 'UI.ReferenceFacet',
             Target            : '@UI.FieldGroup#Description',
             ![@UI.Importance] : #High
         }],
-        FieldGroup #Description        : {Data : [
-            {
-                $Type       : 'UI.DataField',
-                Value       : status_ID,
-                Criticality : status.criticality
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : age
-            },
-        ]},
+        FieldGroup #Description        : {Data : [{
+            $Type       : 'UI.DataField',
+            Value       : status_ID,
+            Criticality : status.criticality
+        }, ]},
         FieldGroup #Details            : {Data : [
             {
                 $Type : 'UI.DataField',
-                Value : name
+                Value : brand,
             },
             {
                 $Type : 'UI.DataField',
-                Value : surname
+                Value : number,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : driver_ID,
             },
             {
                 $Type       : 'UI.DataField',
                 Value       : status_ID,
-                Criticality : status.criticality
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : age
+                Criticality : status.criticality,
             },
         ]},
         FieldGroup #AdministrativeData : {Data : [
@@ -97,10 +91,10 @@ annotate service.Driver with @(
         {
             $Type  : 'UI.CollectionFacet',
             ID     : 'PODetails',
-            Label  : '{i18n>driverInfo}',
+            Label  : '{i18n>carInfo}',
             Facets : [{
                 $Type  : 'UI.ReferenceFacet',
-                Label  : '{i18n>driverInfo}',
+                Label  : '{i18n>carInfo}',
                 Target : '@UI.FieldGroup#Details'
             }]
         },
@@ -112,7 +106,9 @@ annotate service.Driver with @(
                 $Type  : 'UI.ReferenceFacet',
                 Label  : '{i18n>admininfo}',
                 Target : '@UI.FieldGroup#AdministrativeData'
-            }]
+            },
+
+            ]
         }
     ]
 );
@@ -120,3 +116,5 @@ annotate service.Driver with @(
 using from './labels';
 using from './capabilities';
 using from './field-control';
+using from './value-helps';
+
