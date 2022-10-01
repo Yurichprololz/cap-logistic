@@ -1,4 +1,4 @@
-namespace logictic;
+namespace logistic;
 
 using statusSpace as statuses from './status-data';
 using {managed} from '@sap/cds/common';
