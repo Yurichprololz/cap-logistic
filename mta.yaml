@@ -32,6 +32,10 @@ modules:
       - uicar.zip
       name: uicar
       target-path: resources/
+    - artifacts:
+      - uigood.zip
+      name: uigood
+      target-path: resources/
 - name: uidriver
   type: html5
   path: app/ui.driver
@@ -45,6 +49,16 @@ modules:
 - name: uicar
   type: html5
   path: app/ui.car
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: uigood
+  type: html5
+  path: app/ui.good
   build-parameters:
     build-result: dist
     builder: custom

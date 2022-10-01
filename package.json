@@ -20,7 +20,8 @@
         "undeploy": "cf undeploy cap-logistic --delete-services --delete-service-keys --delete-service-brokers",
         "build": "rimraf resources mta_archives && mbt build --mtar archive",
         "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
-        "watch-ui.car": "cds watch --open ui.car/webapp/index.html?sap-ui-xx-viewCache=false"
+        "watch-ui.car": "cds watch --open ui.car/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-ui.good": "cds watch --open ui.good/webapp/index.html?sap-ui-xx-viewCache=false"
     },
     "eslintConfig": {
         "extends": "eslint:recommended",
@@ -59,6 +60,7 @@
     },
     "sapux": [
         "app/ui.driver",
-        "app/ui.car"
+        "app/ui.car",
+        "app/ui.good"
     ]
 }

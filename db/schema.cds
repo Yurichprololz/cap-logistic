@@ -22,7 +22,7 @@ entity Cars : managed {
 entity Goods : managed {
     key ID       : UUID;
         name     : String;
-        price    : Integer;
+        price    : Decimal(15, 2);
         currency : String;
 
 };
