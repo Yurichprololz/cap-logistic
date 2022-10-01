@@ -1,6 +1,6 @@
-using {logictic} from '../../db/schema';
+using {logistic} from '../../db/schema';
 
-annotate logictic.Cars with @title : '{i18n>carTitle}' {
+annotate logistic.Cars with @title : '{i18n>carTitle}' {
     ID     @UI.Hidden;
     status @title                  : '{i18n>carstatus}'
            @Common.Text            : status.name

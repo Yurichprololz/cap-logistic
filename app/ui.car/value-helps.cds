@@ -1,6 +1,6 @@
-using {logictic} from '../../db/schema';
+using {logistic} from '../../db/schema';
 
-annotate logictic.Cars {
+annotate logistic.Cars {
     driver @Common.ValueList : { 
         CollectionPath  : 'Driver',
         Label           : '',

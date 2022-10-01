@@ -1,4 +1,4 @@
-using LogicticService as service from '../../srv/service';
+using LogisticService as service from '../../srv/service';
 
 annotate service.Driver with @(
     UI        : {

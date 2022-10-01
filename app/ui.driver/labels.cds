@@ -1,6 +1,6 @@
-using {logictic} from '../../db/schema';
+using {logistic} from '../../db/schema';
 
-annotate logictic.Drivers with @title : '{i18n>driverTitle}' {
+annotate logistic.Drivers with @title : '{i18n>driverTitle}' {
     ID      @UI.Hidden;
     status  @title                    : '{i18n>driverstatus}'
             @Common.Text              : status.name

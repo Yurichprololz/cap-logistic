@@ -11,7 +11,7 @@ entity Drivers : managed {
         age     : Integer;
 };
 
-entity Cars : managed {
+entity Cars : managed { 
     key ID     : UUID;
         status : Association to statuses.CarStatuses;
         driver : Association to Drivers;

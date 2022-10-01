@@ -1,6 +1,6 @@
-using LogicticService from '../../srv/service';
+using LogisticService from '../../srv/service';
 
-annotate LogicticService.Car with {
+annotate LogictisService.Car with {
     ID     @readonly;
     driver @mandatory;
     brand  @mandatory;

@@ -1,8 +1,8 @@
-using {LogicticService} from '../../srv/service';
+using {LogisticService} from '../../srv/service';
 
-annotate LogicticService.Driver with @odata.draft.enabled;
+annotate LogisticService.Driver with @odata.draft.enabled;
 
-annotate LogicticService.Driver with @Capabilities : {
+annotate LogisticService.Driver with @Capabilities : {
     Deletable  : true,
     Insertable : true
 };
