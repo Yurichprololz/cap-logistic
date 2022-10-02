@@ -3,7 +3,7 @@ const constansts = require('./constants')
 
 module.exports = cds.service.impl(async function () {
 
-    let { Cars, Drivers } = cds.entities('logictic');
+    let { Cars, Drivers } = cds.entities('logistic');
 
     this.before('NEW', 'Driver', async (req) => {
         req.data.status_ID = '1';
@@ -27,6 +27,12 @@ module.exports = cds.service.impl(async function () {
         const driverInfo = await SELECT.from(Cars).where({ ID: ID });
         const { driver_ID } = driverInfo[0]
         await UPDATE(Drivers, { ID: driver_ID }).with({ status_ID: "1" })
+    });
+
+    this.before('DELETE', 'Driver', async (req) => {
+        const { ID } = req.data
+        const carsInfo = await SELECT.from(Cars).where({ driver_ID: ID });
+        await UPDATE(Cars, { ID: carsInfo[0].ID }).with({ status_ID: "1" })
     });
 
 
