@@ -13,7 +13,7 @@
         "sourceTemplate": {
             "id": "@sap/generator-fiori:lrop",
             "version": "1.7.5",
-            "toolsId": "aecaa436-be22-4823-aaf7-9fe7bc1cdc80"
+            "toolsId": "e94f3415-de2b-4586-89d6-483057ac1e09"
         },
         "dataSources": {
             "mainService": {
@@ -42,7 +42,7 @@
                         "parameters": {},
                         "additionalParameters": "allowed"
                     },
-                    "semanticObject": "Car",
+                    "semanticObject": "Cars",
                     "action": "manage",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubtitle}}",
@@ -157,5 +157,9 @@
     "sap.fiori": {
         "registrationIds": [],
         "archeType": "transactional"
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "cap-logistic"
     }
 }

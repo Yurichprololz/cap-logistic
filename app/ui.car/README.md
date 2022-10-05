@@ -1,15 +1,15 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Sat Oct 01 2022 11:18:48 GMT+0000 (Coordinated Universal Time)|
+|**Generation Date and Time**<br>Wed Oct 05 2022 12:32:34 GMT+0000 (Coordinated Universal Time)|
 |**App Generator**<br>@sap/generator-fiori-elements|
 |**App Generator Version**<br>1.7.5|
 |**Generation Platform**<br>SAP Business Application Studio|
 |**Floorplan Used**<br>List Report Object Page V4|
 |**Service Type**<br>Local Cap|
-|**Service URL**<br>http://localhost:4004/logictic/
+|**Service URL**<br>http://localhost:4004/logistic/
 |**Module Name**<br>ui.car|
-|**Application Title**<br>Car|
+|**Application Title**<br>Cars|
 |**Namespace**<br>|
 |**UI5 Theme**<br>sap_horizon|
 |**UI5 Version**<br>1.102.1|

@@ -1,15 +1,15 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Sat Oct 01 2022 10:06:01 GMT+0000 (Coordinated Universal Time)|
+|**Generation Date and Time**<br>Wed Oct 05 2022 14:01:01 GMT+0000 (Coordinated Universal Time)|
 |**App Generator**<br>@sap/generator-fiori-elements|
 |**App Generator Version**<br>1.7.5|
 |**Generation Platform**<br>SAP Business Application Studio|
 |**Floorplan Used**<br>List Report Object Page V4|
 |**Service Type**<br>Local Cap|
-|**Service URL**<br>http://localhost:4004/logictic/
+|**Service URL**<br>http://localhost:4004/logistic/
 |**Module Name**<br>ui.driver|
-|**Application Title**<br>App Title|
+|**Application Title**<br>Driver|
 |**Namespace**<br>|
 |**UI5 Theme**<br>sap_horizon|
 |**UI5 Version**<br>1.102.1|

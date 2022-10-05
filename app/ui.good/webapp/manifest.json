@@ -13,7 +13,7 @@
         "sourceTemplate": {
             "id": "@sap/generator-fiori:lrop",
             "version": "1.7.5",
-            "toolsId": "c47b8702-8877-4e19-8ac8-a50157bee998"
+            "toolsId": "e82b9c1e-e1ec-435e-ac38-5309f8f8ea44"
         },
         "dataSources": {
             "mainService": {
@@ -157,5 +157,9 @@
     "sap.fiori": {
         "registrationIds": [],
         "archeType": "transactional"
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "cap-logistic"
     }
 }

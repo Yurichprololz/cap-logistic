@@ -7,12 +7,12 @@
     "private": true,
     "dependencies": {
         "@sap/cds": ">=5",
-        "express": "^4"
+        "express": "^4",
+        "hdb": "^0.19.0"
     },
     "devDependencies": {
         "@sap/ux-specification": "^1.102.9",
-        "rimraf": "^3.0.2",
-        "sqlite3": "^5.0.4"
+        "rimraf": "^3.0.2"
     },
     "scripts": {
         "start": "cds run",
@@ -51,9 +51,11 @@
     "cds": {
         "requires": {
             "db": {
-                "kind": "sqlite",
-                "credentials": {
-                    "database": "sqlite.db"
+                "kind": "hana-cloud"
+            },
+            "[hybrid]": {
+                "db": {
+                    "kind": "hana-cloud"
                 }
             }
         }
@@ -61,6 +63,7 @@
     "sapux": [
         "app/ui.driver",
         "app/ui.car",
-        "app/ui.good"
+        "app/ui.good",
+        "app/ui.driver"
     ]
 }

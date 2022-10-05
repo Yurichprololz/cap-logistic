@@ -6,6 +6,8 @@ modules:
 - name: cap-logistic-srv
   type: nodejs
   path: gen/srv
+  requires:
+  - name: cap-logistic-db
   provides:
   - name: srv-api
     properties:
@@ -66,6 +68,52 @@ modules:
     - npm install
     - npm run build:cf
     supported-platforms: []
+- name: cap-logistic-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: cap-logistic-destination-service
+    parameters:
+      content-target: true
+  - name: cap-logistic-repo-host
+    parameters:
+      service-key:
+        name: cap-logistic-repo-host-key
+  - name: uaa_cap-logistic
+    parameters:
+      service-key:
+        name: uaa_cap-logistic-key
+  - name: srv-api
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Authentication: OAuth2UserTokenExchange
+          Name: cap-logistic-app-srv
+          TokenServiceInstanceName: cap-logistic-xsuaa-service
+          TokenServiceKeyName: uaa_cap-logistic-key
+          URL: ~{srv-api/srv-url}
+          sap.cloud.service: cap-logistic
+        - Name: cap_logistic_cap_logistic_repo_host
+          ServiceInstanceName: cap-logistic-html5-srv
+          ServiceKeyName: cap-logistic-repo-host-key
+          sap.cloud.service: cap-logistic
+        - Authentication: OAuth2UserTokenExchange
+          Name: cap_logistic_uaa_cap_logistic
+          ServiceInstanceName: cap-logistic-xsuaa-service
+          ServiceKeyName: uaa_cap-logistic-key
+          sap.cloud.service: cap-logistic
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: cap-logistic-db-deployer
+  type: hdb
+  path: db
+  requires:
+  - name: cap-logistic-db
+    properties:
+      TARGET_CONTAINER: ~{hdi-container-name}
+  parameters:
+    buildpack: nodejs_buildpack
 resources:
 - name: cap-logistic-repo-host
   type: org.cloudfoundry.managed-service
@@ -77,7 +125,7 @@ resources:
   type: org.cloudfoundry.managed-service
   parameters:
     config:
-      HTML5Runtime_enabled: false
+      HTML5Runtime_enabled: true
       init_data:
         instance:
           destinations:
@@ -91,6 +139,20 @@ resources:
     service: destination
     service-name: cap-logistic-destination-service
     service-plan: lite
+- name: uaa_cap-logistic
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: cap-logistic-xsuaa-service
+    service-plan: application
+- name: cap-logistic-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+  properties:
+    hdi-container-name: ${service-name}
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true

@@ -10,18 +10,18 @@
         <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
     </edmx:Reference>
     <edmx:DataServices>
-        <Schema Namespace="LogicticService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Schema Namespace="LogisticService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
             <EntityContainer Name="EntityContainer">
-                <EntitySet Name="Driver" EntityType="LogicticService.Driver">
+                <EntitySet Name="Driver" EntityType="LogisticService.Driver">
                     <NavigationPropertyBinding Path="status" Target="DriverStatus"/>
                 </EntitySet>
-                <EntitySet Name="Car" EntityType="LogicticService.Car">
+                <EntitySet Name="Car" EntityType="LogisticService.Car">
                     <NavigationPropertyBinding Path="status" Target="CarStatus"/>
                     <NavigationPropertyBinding Path="driver" Target="Driver"/>
                 </EntitySet>
-                <EntitySet Name="Good" EntityType="LogicticService.Good"/>
-                <EntitySet Name="CarStatus" EntityType="LogicticService.CarStatus"/>
-                <EntitySet Name="DriverStatus" EntityType="LogicticService.DriverStatus"/>
+                <EntitySet Name="Good" EntityType="LogisticService.Good"/>
+                <EntitySet Name="CarStatus" EntityType="LogisticService.CarStatus"/>
+                <EntitySet Name="DriverStatus" EntityType="LogisticService.DriverStatus"/>
             </EntityContainer>
             <EntityType Name="Driver">
                 <Key>
@@ -32,7 +32,7 @@
                 <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
                 <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
                 <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
-                <NavigationProperty Name="status" Type="LogicticService.DriverStatus">
+                <NavigationProperty Name="status" Type="LogisticService.DriverStatus">
                     <ReferentialConstraint Property="status_ID" ReferencedProperty="ID"/>
                 </NavigationProperty>
                 <Property Name="status_ID" Type="Edm.String"/>
@@ -49,11 +49,11 @@
                 <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
                 <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
                 <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
-                <NavigationProperty Name="status" Type="LogicticService.CarStatus">
+                <NavigationProperty Name="status" Type="LogisticService.CarStatus">
                     <ReferentialConstraint Property="status_ID" ReferencedProperty="ID"/>
                 </NavigationProperty>
                 <Property Name="status_ID" Type="Edm.String"/>
-                <NavigationProperty Name="driver" Type="LogicticService.Driver">
+                <NavigationProperty Name="driver" Type="LogisticService.Driver">
                     <ReferentialConstraint Property="driver_ID" ReferencedProperty="ID"/>
                 </NavigationProperty>
                 <Property Name="driver_ID" Type="Edm.Guid"/>
@@ -70,7 +70,7 @@
                 <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
                 <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
                 <Property Name="name" Type="Edm.String"/>
-                <Property Name="price" Type="Edm.Int32"/>
+                <Property Name="price" Type="Edm.Decimal" Scale="2" Precision="15"/>
                 <Property Name="currency" Type="Edm.String"/>
             </EntityType>
             <EntityType Name="CarStatus">
@@ -89,73 +89,73 @@
                 <Property Name="name" Type="Edm.String" MaxLength="20"/>
                 <Property Name="criticality" Type="Edm.Int32"/>
             </EntityType>
-            <Annotations Target="LogicticService.Driver/createdAt">
+            <Annotations Target="LogisticService.Driver/createdAt">
                 <Annotation Term="UI.HiddenFilter" Bool="true"/>
                 <Annotation Term="Core.Immutable" Bool="true"/>
                 <Annotation Term="Core.Computed" Bool="true"/>
                 <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
                 </Annotations>
-                <Annotations Target="LogicticService.Driver/createdBy">
+                <Annotations Target="LogisticService.Driver/createdBy">
                     <Annotation Term="UI.HiddenFilter" Bool="true"/>
                     <Annotation Term="Core.Immutable" Bool="true"/>
                     <Annotation Term="Core.Computed" Bool="true"/>
                     <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
                         <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
                         </Annotations>
-                        <Annotations Target="LogicticService.Driver/modifiedAt">
+                        <Annotations Target="LogisticService.Driver/modifiedAt">
                             <Annotation Term="UI.HiddenFilter" Bool="true"/>
                             <Annotation Term="Core.Computed" Bool="true"/>
                             <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
                             </Annotations>
-                            <Annotations Target="LogicticService.Driver/modifiedBy">
+                            <Annotations Target="LogisticService.Driver/modifiedBy">
                                 <Annotation Term="UI.HiddenFilter" Bool="true"/>
                                 <Annotation Term="Core.Computed" Bool="true"/>
                                 <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
                                     <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
                                     </Annotations>
-                                    <Annotations Target="LogicticService.Car/createdAt">
+                                    <Annotations Target="LogisticService.Car/createdAt">
                                         <Annotation Term="UI.HiddenFilter" Bool="true"/>
                                         <Annotation Term="Core.Immutable" Bool="true"/>
                                         <Annotation Term="Core.Computed" Bool="true"/>
                                         <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
                                         </Annotations>
-                                        <Annotations Target="LogicticService.Car/createdBy">
+                                        <Annotations Target="LogisticService.Car/createdBy">
                                             <Annotation Term="UI.HiddenFilter" Bool="true"/>
                                             <Annotation Term="Core.Immutable" Bool="true"/>
                                             <Annotation Term="Core.Computed" Bool="true"/>
                                             <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
                                                 <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
                                                 </Annotations>
-                                                <Annotations Target="LogicticService.Car/modifiedAt">
+                                                <Annotations Target="LogisticService.Car/modifiedAt">
                                                     <Annotation Term="UI.HiddenFilter" Bool="true"/>
                                                     <Annotation Term="Core.Computed" Bool="true"/>
                                                     <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
                                                     </Annotations>
-                                                    <Annotations Target="LogicticService.Car/modifiedBy">
+                                                    <Annotations Target="LogisticService.Car/modifiedBy">
                                                         <Annotation Term="UI.HiddenFilter" Bool="true"/>
                                                         <Annotation Term="Core.Computed" Bool="true"/>
                                                         <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
                                                             <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
                                                             </Annotations>
-                                                            <Annotations Target="LogicticService.Good/createdAt">
+                                                            <Annotations Target="LogisticService.Good/createdAt">
                                                                 <Annotation Term="UI.HiddenFilter" Bool="true"/>
                                                                 <Annotation Term="Core.Immutable" Bool="true"/>
                                                                 <Annotation Term="Core.Computed" Bool="true"/>
                                                                 <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
                                                                 </Annotations>
-                                                                <Annotations Target="LogicticService.Good/createdBy">
+                                                                <Annotations Target="LogisticService.Good/createdBy">
                                                                     <Annotation Term="UI.HiddenFilter" Bool="true"/>
                                                                     <Annotation Term="Core.Immutable" Bool="true"/>
                                                                     <Annotation Term="Core.Computed" Bool="true"/>
                                                                     <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
                                                                         <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
                                                                         </Annotations>
-                                                                        <Annotations Target="LogicticService.Good/modifiedAt">
+                                                                        <Annotations Target="LogisticService.Good/modifiedAt">
                                                                             <Annotation Term="UI.HiddenFilter" Bool="true"/>
                                                                             <Annotation Term="Core.Computed" Bool="true"/>
                                                                             <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
                                                                             </Annotations>
-                                                                            <Annotations Target="LogicticService.Good/modifiedBy">
+                                                                            <Annotations Target="LogisticService.Good/modifiedBy">
                                                                                 <Annotation Term="UI.HiddenFilter" Bool="true"/>
                                                                                 <Annotation Term="Core.Computed" Bool="true"/>
                                                                                 <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
