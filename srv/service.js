@@ -1,5 +1,6 @@
 const cds = require('@sap/cds');
 const constansts = require('./constants')
+const cpi = require('./cpi')
 
 module.exports = cds.service.impl(async function () {
 
@@ -34,6 +35,14 @@ module.exports = cds.service.impl(async function () {
         const carsInfo = await SELECT.from(Cars).where({ driver_ID: ID });
         await UPDATE(Cars, { ID: carsInfo[0].ID }).with({ status_ID: "1" })
     });
+
+    this.before('DELETE', 'Driver', async (req) => {
+        const { ID } = req.data
+        const carsInfo = await SELECT.from(Cars).where({ driver_ID: ID });
+        await UPDATE(Cars, { ID: carsInfo[0].ID }).with({ status_ID: "1" })
+    });
+
+    this.on('sendToStorehouse', 'Car', cpi.sendToStorehouse)
 
 
 })

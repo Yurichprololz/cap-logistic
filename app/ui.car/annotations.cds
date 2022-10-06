@@ -2,6 +2,7 @@ using LogisticService as service from '../../srv/service';
 
 annotate service.Car with @(
     UI        : {
+        Identification      : [{Value :ID},{ $Type : 'UI.DataFieldForAction', Action : 'LogisticService.sendToStorehouse', Label : '{i18n>sendToStorehouse}'},],
         SelectionFields     : [number],
         LineItem            : [
             {
