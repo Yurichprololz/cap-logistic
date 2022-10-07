@@ -11,12 +11,13 @@ entity Drivers : managed {
         age     : Integer;
 };
 
-entity Cars : managed { 
-    key ID     : UUID;
-        status : Association to statuses.CarStatuses;
-        driver : Association to Drivers;
-        brand  : String;
-        number : String(6);
+entity Cars : managed {
+    key ID                              : UUID;
+        status                          : Association to statuses.CarStatuses;
+        driver                          : Association to Drivers;
+        brand                           : String;
+        number                          : String(6);
+        virtual sendToStorehouseEnabled : Boolean;
 };
 
 entity Goods : managed {
