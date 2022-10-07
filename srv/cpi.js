@@ -1,8 +1,6 @@
 const cds = require('@sap/cds');
-const SapCfAxios = require('sap-cf-axios').default;
 
 const { Cars, Drivers } = cds.entities('logistic')
-
 
 async function sendToStorehouse(req) {
     try {
@@ -12,24 +10,13 @@ async function sendToStorehouse(req) {
 
         const payload = JSON.stringify({
             ID: carInfo[0].ID,
-            driverSurname:driverInfo[0].surname,
+            driverSurname: driverInfo[0].surname,
             carName: carInfo[0].brand + ' ' + carInfo[0].number,
         });
-        const axios = SapCfAxios("CPI_DESTINATION");
-        cds.tx(async () => {
-            await axios({
-                method: 'POST',
-                url: '/http/toStorehouse',
-                data: payload,
-                headers: {
-                    "content-type": "application/json"
-                }
-            });
-            await UPDATE(Cars, { ID: ID }).with({ status_ID: "3" });
 
-        })
-
-
+        const cpi = await cds.connect.to('CPI_DESTINATION');
+        await cpi.tx(req).post('/http/toStorehouse', payload);
+        await UPDATE(Cars, { ID: ID }).with({ status_ID: "3" });
     }
     catch (error) {
         console.log("Dispatch to CPI was not successful. Rejected with error: ", error)
