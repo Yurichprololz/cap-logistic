@@ -2,6 +2,14 @@ using LogisticService as service from '../../srv/service';
 
 annotate service.Driver with @(
     UI        : {
+        Identification      : [
+            {Value : ID},
+            {
+                $Type  : 'UI.DataFieldForAction',
+                Action : 'LogisticService.rateDriver',
+                Label  : '{i18n>rateDriver}'
+            },
+        ],
         SelectionFields     : [name],
         LineItem            : [
             {
@@ -25,12 +33,21 @@ annotate service.Driver with @(
                 Criticality       : status.criticality,
                 ![@UI.Importance] : #High
             },
+            {
+                $Type  : 'UI.DataFieldForAnnotation',
+                Target : '@UI.DataPoint#rating'
+            },
         ],
         PresentationVariant : {SortOrder : [{
             $Type      : 'Common.SortOrderType',
             Property   : name,
             Descending : false
         }]},
+        DataPoint #rating   : {
+            Value         : rating,
+            Visualization : #Rating,
+            TargetValue   : 5
+        }
     },
     UI        : {
         HeaderInfo                     : {
@@ -72,6 +89,10 @@ annotate service.Driver with @(
             {
                 $Type : 'UI.DataField',
                 Value : age
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : rating
             },
         ]},
         FieldGroup #AdministrativeData : {Data : [

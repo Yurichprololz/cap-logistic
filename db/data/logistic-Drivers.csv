@@ -1,2 +1,2 @@
-ID;status_ID;name;surname;age
-9213182a-08a9-45c3-81c7-c5323a1dab01;2;Michael;Schumacher;53
+ID;status_ID;name;surname;age;rating
+9213182a-08a9-45c3-81c7-c5323a1dab01;2;Michael;Schumacher;53;4.50
