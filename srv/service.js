@@ -12,6 +12,16 @@ module.exports = cds.service.impl(async function () {
         req.data.rating = '0.0'
     });
 
+    this.before(['CREATE', 'UPDATE'], 'Driver', async (req) => {
+        const { name, surname } = req.data
+        const reqExp = /[\d?\s?!?@?#?$?%?^?&?*?*?(?)?\]_?]/g
+        const nameIsInvalid = reqExp.test(name)
+        const surnameIsInvalid = reqExp.test(surname)
+        if (nameIsInvalid || surnameIsInvalid) {
+            throw new Error(constansts.errors.invalidName)
+        }
+    });
+
     this.before('NEW', 'Car', async (req) => {
         req.data.status_ID = '2';
     });
