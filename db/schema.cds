@@ -12,6 +12,7 @@ entity Drivers : managed {
         surname  : String;
         age      : Integer;
         rating   : Decimal(2, 1);
+        image    : LargeBinary @Core.MediaType : 'image/png';
         rateList : Composition of many Driver_Rating
                        on rateList.driver = $self;
 };

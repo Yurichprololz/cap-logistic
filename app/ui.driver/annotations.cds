@@ -63,13 +63,13 @@ annotate service.Driver with @(
         }],
         FieldGroup #Description        : {Data : [
             {
+                $Type : 'UI.DataField',
+                Value : image,
+            },
+            {
                 $Type       : 'UI.DataField',
                 Value       : status_ID,
                 Criticality : status.criticality
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : age
             },
         ]},
         FieldGroup #Details            : {Data : [
@@ -111,6 +111,10 @@ annotate service.Driver with @(
             {
                 $Type : 'UI.DataField',
                 Value : modifiedAt
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : image
             }
         ]}
     },
