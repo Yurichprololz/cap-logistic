@@ -7,10 +7,10 @@ async function sendToStorehouse(req) {
         const { ID } = req.params[0];
         const carInfo = await SELECT.from(Cars).where({ ID: ID });
         const driverInfo = await SELECT.from(Drivers).where({ ID: carInfo[0].driver_ID });
-
         const payload = JSON.stringify({
             ID: carInfo[0].ID,
             driverSurname: driverInfo[0].surname,
+            driverRating: driverInfo[0].rating,
             carName: carInfo[0].brand + ' ' + carInfo[0].number,
         });
 

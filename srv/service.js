@@ -36,10 +36,6 @@ module.exports = cds.service.impl(async function () {
         }
     });
 
-    this.before('UPDATE', 'Driver', async (req) => {
-        console.log('lala ' + req.data)
-    })
-
     this.before('DELETE', 'Car', async (req) => {
         const { ID } = req.data
         const driverInfo = await SELECT.from(Cars).where({ ID: ID });
