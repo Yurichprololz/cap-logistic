@@ -54,6 +54,7 @@ module.exports = cds.service.impl(async function () {
         const carsInfo = await SELECT.from(Cars).where({ driver_ID: ID });
         await UPDATE(Cars, { ID: carsInfo[0].ID }).with({ status_ID: "1" })
     });
+    
     this.after('READ', 'Car', (each) => {
         if (each.status_ID === '2') {
             each.sendToStorehouseEnabled = true;
