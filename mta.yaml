@@ -9,6 +9,7 @@ modules:
   requires:
   - name: cap-logistic-db
   - name: dest_service
+  - name: uaa_cap-logistic
   provides:
   - name: srv-api
     properties:
