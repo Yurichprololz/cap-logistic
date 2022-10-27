@@ -8,6 +8,5 @@ annotate logistic.Drivers with @title   : '{i18n>driverTitle}' {
         name    @title                  : '{i18n>driverName}';
         surname @title                  : '{i18n>driverSurame}';
         age     @title                  : '{i18n>driverAge}';
-        rating  @title                  : '{i18n>rating}'
-                @Measures.ISOCurrency   : '/ 5';
+        rating  @title                  : '{i18n>rating}';
 }
