@@ -18,7 +18,7 @@ module.exports = cds.service.impl(async function () {
         const nameIsInvalid = reqExp.test(name)
         const surnameIsInvalid = reqExp.test(surname)
         if (nameIsInvalid || surnameIsInvalid) {
-            throw new Error(constansts.errors.invalidName)
+            return req.error(400, constansts.errors.invalidName)
         }
     });
 
@@ -30,7 +30,7 @@ module.exports = cds.service.impl(async function () {
         const { driver_ID } = req.data;
         let driverInfo = await SELECT.from(Drivers).where({ ID: driver_ID })
         if (driverInfo[0].status_ID === '2') {
-            throw new Error(constansts.errors.busyDriver)
+            return req.error(400, constansts.errors.busyDriver)
         } else {
             await UPDATE(Drivers, { ID: driver_ID }).with({ status_ID: "2" })
         }
