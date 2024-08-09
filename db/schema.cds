@@ -1,7 +1,14 @@
 namespace logistic;
 
 using statusSpace as statuses from './status-data';
-using {managed} from '@sap/cds/common';
+using {managed}
+
+entity Customers {
+    key ID : Integer;
+    name : String;
+    surname : String;
+    age : Integer;
+} from '@sap/cds/common';
 using rating from './rating';
 
 
@@ -15,6 +22,13 @@ entity Drivers : managed {
         image    : LargeBinary @Core.MediaType : 'image/png';
         rateList : Composition of many Driver_Rating
                        on rateList.driver = $self;
+}
+
+entity Customers {
+    key ID : Integer;
+    name : String;
+    surname : String;
+    age : Integer;
 };
 
 entity Cars : managed {
@@ -24,6 +38,13 @@ entity Cars : managed {
         brand                           : String;
         number                          : String(6);
         virtual sendToStorehouseEnabled : Boolean;
+}
+
+entity Customers {
+    key ID : Integer;
+    name : String;
+    surname : String;
+    age : Integer;
 };
 
 entity Goods : managed {
@@ -32,6 +53,13 @@ entity Goods : managed {
         price    : Decimal(15, 2);
         currency : String;
 
+}
+
+entity Customers {
+    key ID : Integer;
+    name : String;
+    surname : String;
+    age : Integer;
 };
 
 entity Driver_Rating {
@@ -39,4 +67,11 @@ entity Driver_Rating {
         comment : String;
         driver  : Association to Drivers;
         rate    : Association to rating.RatingList;
+}
+
+entity Customers {
+    key ID : Integer;
+    name : String;
+    surname : String;
+    age : Integer;
 }
