@@ -1,0 +1,1 @@
+entity GoodCar { key ID : Integer; name : String(100); description : String(255); }
