@@ -13,6 +13,10 @@ service LogisticService {
         action sendToStorehouse()
     };
 
+    // Adding GoodCar entity
+    entity GoodCar    as projection on logistic.GoodCar;
+    };
+
     entity Good         as projection on logistic.Goods;
     entity CarStatus    as projection on statusSpace.CarStatuses;
     entity DriverStatus as projection on statusSpace.DriverStatuses;
